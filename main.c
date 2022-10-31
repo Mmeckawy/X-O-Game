@@ -10,6 +10,7 @@ char board [3][3] =
 
 char sign = 'X';
 int choice,r,c;
+int draw = 0;
 
 void print_board()
 {
@@ -143,15 +144,17 @@ bool win_game()
 {
   if(vertical_win() == true || horizontal_win() == true || diagonal_win() == true)
   return true;
-  else false;
+  else return false;
 }
+
 
 int main() {
 
-  while(win_game() == false)
+  while(win_game() == false && draw < 9)
   {
     print_board();
     play_move();
+    draw++;
   }
 
   if(win_game() == true && sign == 'O')
